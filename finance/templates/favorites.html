@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Favorites
+{% endblock %}
+
+{% block main %}
+
+<form action="/favorites" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Symbol" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Add</button>
+
+</form>
+<form action="/delete" method="post">
+    <div>
+    <button class="btn btn-secondary" action="/delete" method="post">Clear</button>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-start">Symbol</th>
+            <th class="text-end">Name</th>
+            <th class="text-end">Price</th>
+        </tr>
+    </thead>
+    <tbody >
+        {% for row in quotes %}
+        <tr>
+            <td class="text-start">{{row.symbol}}</td>
+            <td class="text-end">{{row.name}}</td>
+            <td class="text-end">{{row.price | usd }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Main
+{% endblock %}
+
+{% block main %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-start">Symbol</th>
+            <th class="text-start">Name</th>
+            <th class="text-end">Shares</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">TOTAL</th>
+        </tr>
+    </thead>
+    <tbody >
+        {% for row in data_case %}
+        <tr>
+            <td class="text-start">{{row.symbol}}</td>
+            <td class="text-start">{{row.name}}</td>
+            <td class="text-end">{{row.amount}}</td>
+            <td class="text-end">{{row.price | usd }}</td>
+            <td class="text-end">{{(row.amount * row.price)| usd }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-end">Cash</td>
+            <td class="text-end">{{cash| usd }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-end">TOTAL:</td>
+            <td class="text-end">{{(calc + cash)| usd }}</td>
+        </tr>
+    </tfoot>
+</table>
+
+{% endblock %}
