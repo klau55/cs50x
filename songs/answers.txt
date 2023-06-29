@@ -1,0 +1,2 @@
+more towards danceability and energy, less towards valence
+The results may be incorrect because the top 100 song limit in not very representative of the actual music tastes
