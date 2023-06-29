@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Reserve
+{% endblock %}
+
+{% block main %}
+
+<form action="/reserve" method="post">
+    <select class="form-select mx-auto w-auto" id="month" name="month">
+
+
+        {% for day in week %}  <option disabled="" selected="">Month</option>
+
+        {%endfor%}
+
+    </select>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{% endblock %}

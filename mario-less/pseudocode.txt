@@ -1,0 +1,3 @@
+request for height input
+if input value more than 8 or less than 1 - go back to step 1
+figure out how to automatically widen

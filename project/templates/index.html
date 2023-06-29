@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Reservation tool
+{% endblock %}
+
+{% block main %}
+
+<script>
+function myFunction(e) {
+    console.log(e)
+    window.location = '/?date=' + e;
+}
+</script>
+<div class="box">
+<h1 class="h1">Reserve a time here!</h1>
+
+
+<form action="/" method="post">
+<br>
+<input onchange="myFunction(this.value)" type="date" id="birthday" value='{{date.strftime("%Y-%m-%d")}}' min='{{mindate.strftime("%Y-%m-%d")}}'  name="birthday">
+<br>
+<select class="form-select mx-auto w-auto" id="timetable" name="timetable">
+<br>
+{% for i in range(6) %}
+{% if i not in forbidden %}
+<option value="{{i}}"> {{(10 + i * 2)|string + ":00 - " + (12 + i * 2)|string + ":00"}}   </option>
+{% endif %}
+{% endfor %}
+</select>
+<br>
+<button type = "submit">Reserve</button>
+
+</form>
+</div>
+{% endblock %}

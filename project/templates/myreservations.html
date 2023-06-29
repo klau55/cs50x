@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My reservations
+{% endblock %}
+
+{% block main %}
+<script>
+function MyFunction(t) {
+    console.log(t)
+    window.location = '/?delete=' + t;
+}
+</script>
+
+<div class="box">
+<h1 class="h1">My reservations:</h1>
+<br>
+<form action="/myreservations" method="post">
+<table class="table table-hover" style="width:900px;margin-left: auto;margin-right: auto;border: 1px solid">
+    <thead>
+        <tr>
+            <th class="text-end">Day</th>
+            <th class="text-end">Time</th>
+            <th class="text-end"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in reservations %}
+        <tr>
+            <td class="text-end"id="date" name="date"> {{ i.datetime }}</td>
+            <td class="text-end" id="time" name="time"> {{(10 + i.forbidden * 2)|string + ":00 - " + (12 + i.forbidden * 2)|string + ":00"}}</td>
+            <td class="text-end" >  <button value="{{i}}" id="cancel" name="cancel"> Cancel </button></td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</form>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
